@@ -1,0 +1,25 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% block title %}
+{% if category %}{{ product.category.name }} - Moms Paradise{% else %}Products - Moms Paradise{% endif %}
+{% endblock %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-raised rounded img-fluid">
+        </div>
+        <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+            <h1 class="title">{{ product.name }}</h1>
+            <h6 class="grey-text">{{ product.category.name }}</h6>
+            <p class="text-muted">{{ product.description }}</p>
+            <h4 class="title">Rs. {{ product.price }}</h4>
+            <form action="{% url 'cart_add' product.id %}" method="post" class="form-inline">
+                {% csrf_token %}
+                {{ cart_product_form.as_p }}
+                <button type="submit" class="btn btn-primary my-1">Add to Cart</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% block title %}
+{% if category %}{{ category.name }} - Moms Paradise{% else %}Products - Moms Paradise{% endif %}
+{% endblock %}
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="offset-lg-1 col-lg-2 offset-md-2 col-md-8 offset-md-2 col-sm-12 col-12">
+                <ul class="nav nav-pills flex-column">
+                  <li class="nav-item">
+                    <a
+                       {% if category.slug == none %} class="nav-link active"
+                       {% else %} class="nav-link"
+                       {% endif %}
+                       href="{% url 'product_list' %}">All</a>
+                  </li>
+                  {% for c in categories %}
+                    <li class="nav-item">
+                    <a
+                       {% if category.slug == c.slug %} class="nav-link active"
+                       {% else %} class="nav-link"
+                       {% endif %}
+                       href="{{ c.get_absolute_url }}">{{ c.name }}</a>
+                  </li>
+                  {% endfor %}
+                </ul>
+
+            </div>
+            <div class="col-lg-7 col-md-10 col-sm-10 offset-1 col-10 offset-1">
+                <div class="row">
+                {% for p in products %}
+                 <div class="col-lg-4 col-md-6 col-sm-6">
+                     <div class="card">
+                      <a href="{{ p.get_absolute_url }}">
+                          <img class="card-img-top" src="{{ p.image.url }}" alt="{{ p.name }}" height="200px;">
+                      </a>
+                      <div class="card-body text-center">
+                          <h4 class="card-title">{{ p.name }}</h4>
+                          <h6 class="card-category text-gray">{{ p.category.name }}</h6>
+                        <p class="card-text">{{ p.price }}/-</p>
+                          <form action="{% url 'cart_add' p.id %}" method="post">
+                                {% csrf_token %}
+                                {{ cart_product_form.as_p }}
+                                <button type="submit" class="btn btn-primary my-1">Add to Cart</button>
+                          </form>
+                      </div>
+                    </div>
+                 </div>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

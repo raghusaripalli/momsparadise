@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Order {{ order.id }}</title>
+</head>
+<body>
+<h1>Order {{ order.id }}</h1>
+<hr>
+<h3>Customer Details</h3>
+<ul>
+    <li>Name: {{ order.name }}</li>
+    <li>Contact: {{ order.phone }}</li>
+    <li>Address: {{ order.address }}</li>
+    <li>Pincode: {{ order.pincode }}</li>
+    {% if order.landmark %}
+    <li>Landmark: {{ order.landmark }}</li>
+    {% endif %}
+</ul>
+<hr>
+<h3>Order Details</h3>
+<table width="50%" border="1">
+    <tr>
+        <th>Item</th>
+        <th>Quantity</th>
+        <th>Price</th>
+    </tr>
+{% for item in orderItem %}
+    <tr>
+        <td>{{ item.product.name }}</td>
+        <td>{{ item.quantity }}</td>
+        <td>{{ item.product.price }}</td>
+    </tr>
+{% endfor %}
+    <tr>
+        <td colspan="2">Total Price</td>
+        <td>{{ total_price }}</td>
+    </tr>
+</table>
+</body>
+</html>

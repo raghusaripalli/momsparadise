@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="apple-touch-icon" sizes="76x76" href="{% static 'img/apple-icon.png' %}">
+  <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>
+    Moms Paradise
+  </title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  <link href="{% static 'css/material-kit.min.css' %}" rel="stylesheet" />
+</head>
+
+<body class="landing-page sidebar-collapse">
+  <nav class="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg" color-on-scroll="100" id="sectionsNav">
+    <div class="container">
+      <div class="navbar-translate">
+        <a class="navbar-brand" href="{% url 'home' %}">Moms Paradise</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+              <a class="nav-link" href="{% url 'product_list' %}"><i class="material-icons">shopping_basket</i> Shop
+            </a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="{% url 'cart_detail' %}"><i class="material-icons">shopping_cart</i>
+              {% if cart.get_no_of_items > 0 %}
+                <span class="badge badge-danger">{{ cart.get_no_of_items }}</span>
+                {% endif %}
+                Cart
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#careers" class="nav-link"><i class="material-icons">work</i> Careers </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="page-header header-filter" data-parallax="true" style="background-image: url('{% static 'img/bg_food.png' %}')">
+    <div class="container">
+      <div class="row">
+        <div class="offset-md-6 col-md-6 text-right">
+          <h1 class="title">With Love from a Mother.</h1>
+          <h4>Mom always said: How do you know you don&apos;t like it if you haven&apos;t tasted it? Here's a chance to taste moms food</h4>
+          <br>
+          <a href="{% url 'product_list' %}" target="_blank" class="btn btn-success btn-raised btn-lg">
+            <i class="material-icons">shopping_basket</i> Visit Shop
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="main main-raised">
+    <div class="container">
+      <div class="section text-center">
+        <hr style="background-color: orange;width: 5%;border: solid 2px orange; height: 1px;">
+        <div class="row">
+          <div class="col-md-8 ml-auto mr-auto">
+            <h2 class="title">About Us</h2>
+            <h5 class="description" style="color: purple; font-family: Helvetica">
+              We believe that healthy, homemade food is the soul of good living. Established in Visakhapatnam, Mom’s paradise set out to provide food made with love to everyone.
+It’s not just about delivering good food for us, it’s so much more. We want everyone to feel the essence of mother’s love even when they’re eating food not from home.
+We believe food making  is an art form and we help mothers to showcase their talents.
+            </h5>
+          </div>
+        </div>
+      </div>
+      <div class="section text-center">
+        <hr style="background-color: orange;width: 5%;border: solid 2px orange; height: 1px;">
+        <h2 class="title">Meet the team</h2>
+        <div class="team">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="team-player">
+                <div class="card card-plain">
+                  <div class="col-8 col-sm-6 col-md-6 ml-auto mr-auto">
+                    <img src="{% static 'faces/chaarsh.jpg' %}" alt="Thumbnail Image" class="img-raised rounded-circle img-fluid">
+                  </div>
+                  <h4 class="card-title">Dwarapureddy Chaarshani
+                    <br>
+                    <small class="card-description text-muted">Founder</small>
+                  </h4>
+                  <div class="card-body">
+                    <p class="card-description">Mechanical Engineering, Andhra University (alumnus)</p>
+                  </div>
+                  <div class="card-footer justify-content-center">
+                    <a href="https://twitter.com/chaarshani7" target="_blank" class="btn btn-link btn-just-icon"><i class="fa fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/in/chaarshani-chakrika-2b4732b5/" target="_blank" class="btn btn-link btn-just-icon"><i class="fa fa-linkedin"></i></a>
+                    <a href="https://www.facebook.com/chaarshani" target="_blank" class="btn btn-link btn-just-icon"><i class="fa fa-facebook-square"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="team-player">
+                <div class="card card-plain">
+                  <div class="col-8 col-sm-6 col-md-6 ml-auto mr-auto">
+                    <img src="{% static 'faces/srinivas.jpg' %}" alt="Thumbnail Image" class="img-raised rounded-circle img-fluid">
+                  </div>
+                  <h4 class="card-title">Srinivas Yashoda
+                    <br>
+                    <small class="card-description text-muted">Marketing</small>
+                  </h4>
+                  <div class="card-body">
+                    <p class="card-description">Mechanical Engineering, GITAM University</p>
+                  </div>
+                  <div class="card-footer justify-content-center">
+                    <a href="https://twitter.com/Srinivas65789?s=08" target="_blank" class="btn btn-link btn-just-icon"><i class="fa fa-twitter"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=100004021424581" target="_blank" class="btn btn-link btn-just-icon"><i class="fa fa-facebook-square"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="team-player">
+                <div class="card card-plain">
+                  <div class="col-8 col-sm-6 col-md-6 ml-auto mr-auto">
+                    <img src="{% static 'faces/raghu.jpg' %}" alt="Thumbnail Image" class="img-raised rounded-circle img-fluid">
+                  </div>
+                  <h4 class="card-title">Raghuveer Saripalli
+                    <br>
+                    <small class="card-description text-muted">Tech Lead</small>
+                  </h4>
+                  <div class="card-body">
+                    <p class="card-description">Computer Science in Gayatri Vidya Parishad(A). </p>
+                  </div>
+                  <div class="card-footer justify-content-center">
+                    <a href="https://twitter.com/RaghuSaripalli" target="_blank" class="btn btn-link btn-just-icon"><i class="fa fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/in/saripalli-raghuveer-5408a72a/" target="_blank" class="btn btn-link btn-just-icon"><i class="fa fa-linkedin"></i></a>
+                    <a href="https://www.facebook.com/saripalli.raghuveer" target="_blank" class="btn btn-link btn-just-icon"><i class="fa fa-facebook-square"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="team-player">
+                <div class="card card-plain">
+                  <div class="col-8 col-sm-6 col-md-6 ml-auto mr-auto">
+                    <img src="{% static 'faces/sadhu.jpg' %}" alt="Thumbnail Image" class="img-raised rounded-circle img-fluid">
+                  </div>
+                  <h4 class="card-title">Gayatri Sadhana
+                    <br>
+                    <small class="card-description text-muted">Business Strategist</small>
+                  </h4>
+                  <div class="card-body">
+                    <p class="card-description">Mechanical Engineering, Andhra University (alumnus)</p>
+                  </div>
+                  <div class="card-footer justify-content-center">
+                    <a href="https://www.linkedin.com/in/sadhana-devu-9103ba111/" class="btn btn-link btn-just-icon"><i class="fa fa-linkedin"></i></a>
+                    <a href="https://m.facebook.com/gayathri.sadhana" class="btn btn-link btn-just-icon"><i class="fa fa-facebook-square"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="team-player">
+                <div class="card card-plain">
+                  <div class="col-8 col-sm-6 col-md-6 ml-auto mr-auto">
+                    <img src="{% static 'faces/sravan.jpg' %}" alt="Thumbnail Image" class="img-raised rounded-circle img-fluid">
+                  </div>
+                  <h4 class="card-title">Sravan LVS
+                    <br>
+                    <small class="card-description text-muted">Production</small>
+                  </h4>
+                  <div class="card-body">
+                    <p class="card-description">Mechanical Engineering, GITAM University</p>
+                  </div>
+                  <div class="card-footer justify-content-center">
+                    <a href="https://m.facebook.com/sravan.nani.904750" target="_blank" class="btn btn-link btn-just-icon"><i class="fa fa-facebook-square"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="team-player">
+                <div class="card card-plain">
+                  <div class="col-8 col-sm-6 col-md-6 ml-auto mr-auto">
+                    <img src="{% static 'faces/pinky.jpg' %}" alt="Thumbnail Image" class="img-raised rounded-circle img-fluid">
+                  </div>
+                  <h4 class="card-title">Jwaritha Bodasingu
+                    <br>
+                    <small class="card-description text-muted">Quality Control</small>
+                  </h4>
+                  <div class="card-body">
+                    <p class="card-description">PharmD, Andhra University</p>
+                  </div>
+                  <div class="card-footer justify-content-center">
+                    <a href="https://twitter.com/BJwarita?s=08" target="_blank" class="btn btn-link btn-just-icon"><i class="fa fa-twitter"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="team-player">
+                <div class="card card-plain">
+                  <div class="col-8 col-sm-6 col-md-6 ml-auto mr-auto">
+                    <img src="{% static 'faces/adi.jpg' %}" alt="Thumbnail Image" class="img-raised rounded-circle img-fluid">
+                  </div>
+                  <h4 class="card-title">Aditya Erra
+                    <br>
+                    <small class="card-description text-muted">Finance</small>
+                  </h4>
+                  <div class="card-body">
+                    <p class="card-description">Mechanical Engineering, GITAM University</p>
+                  </div>
+                  <div class="card-footer justify-content-center">
+                    <a href="https://twitter.com/adithya_erra?lang=en" target="_blank" class="btn btn-link btn-just-icon"><i class="fa fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/in/adithya-erra-19a373167/" target="_blank" class="btn btn-link btn-just-icon"><i class="fa fa-linkedin"></i></a>
+                    <a href="https://www.facebook.com/erra.adithya.3" target="_blank" class="btn btn-link btn-just-icon"><i class="fa fa-facebook-square"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="team-player">
+                <div class="card card-plain">
+                  <div class="col-8 col-sm-6 col-md-6 ml-auto mr-auto">
+                    <img src="{% static 'faces/varma.jpg' %}" alt="Thumbnail Image" class="img-raised rounded-circle img-fluid">
+                  </div>
+                  <h4 class="card-title">Manikanta Varma
+                    <br>
+                    <small class="card-description text-muted">Service Operations</small>
+                  </h4>
+                  <div class="card-body">
+                    <p class="card-description">Mechanical Engineering, GITAM University</p>
+                  </div>
+                  <div class="card-footer justify-content-center">
+                    <a href="https://mobile.twitter.com/kool_varma" target="_blank" class="btn btn-link btn-just-icon"><i class="fa fa-twitter"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=100005671273605" target="_blank" class="btn btn-link btn-just-icon"><i class="fa fa-facebook-square"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="section section-contacts" id="careers">
+        <hr style="background-color: orange;width: 5%;border: solid 2px orange; height: 1px;">
+        <div class="row text-left">
+          <div class="col-md-8 ml-auto mr-auto">
+            <h2 class="text-center title">CAREERS</h2>
+            <h4 class="text-center description">HUNGRY TO MAKE A DIFFERENCE? JOIN US</h4>
+            <form class="contact-form" method="post" action="{% url 'thank_you' %}">
+              {% csrf_token %}
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">Name</label>
+                    <input type="text" class="form-control" name="name" required>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">Phone</label>
+                    <input type="number" maxlength="10" class="form-control" name="phone" required>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">Email ID</label>
+                    <input type="text" class="form-control" name="email" required>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">Highest Degree</label>
+                    <input type="text" class="form-control" name="edu" required>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">Yet Studying? Else ?</label>
+                    <input type="text" class="form-control" name="current" required>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="select1">What do you prefer to do ?</label>
+                    <select class="form-control" id="select1" name="pref">
+                      <option>Delivery services</option>
+                      <option>Customer Service</option>
+                      <option>Operations</option>
+                      <option>Digital marketing</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4 ml-auto mr-auto text-center">
+                  <input type="submit" class="btn btn-primary btn-raised" name="careers" value="Join Us"/>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="section section-contacts">
+        <hr style="background-color: orange;width: 5%;border: solid 2px orange; height: 1px;">
+        <div class="row text-left">
+          <div class="col-md-8 ml-auto mr-auto">
+            <h2 class="text-center title">Be part of our family</h2>
+            <h4 class="text-center description">Expert in home cooking! You have come to the right place</h4>
+            <form class="contact-form" method="post" action="{% url 'thank_you' %}">
+              {% csrf_token %}
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">Name</label>
+                    <input type="text" class="form-control" name="name" required>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">Phone</label>
+                    <input type="tel" class="form-control" name="phone" required>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">Where do you stay?</label>
+                    <input type="text" class="form-control" name="address" required>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">What do you cook?</label>
+                    <input type="text" class="form-control" name="items" required>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">Feasible Timings</label>
+                    <input type="text" class="form-control" name="timing" required>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">Mail Id(Optional)</label>
+                    <input type="email" class="form-control" name="mailid">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4 ml-auto mr-auto text-center">
+                  <input class="btn btn-primary btn-raised" name="moms" value="Register" type="submit"/>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="footer footer-default">
+    <div class="container">
+      <nav class="float-left">
+        <ul>
+          <li>
+            <a href="#">
+              Contact Us:  +917207855105
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <div class="copyright float-right">
+        &copy;
+        <script>
+          document.write(new Date().getFullYear())
+        </script>, made with <i class="material-icons">favorite</i> by
+        <a href="https://www.facebook.com/saripalli.raghuveer" target="_blank">Raghu Saripalli</a>
+      </div>
+    </div>
+  </footer>
+  <script src="{% static 'js/core/jquery.min.js' %}" type="text/javascript"></script>
+  <script src="{% static 'js/core/popper.min.js' %}" type="text/javascript"></script>
+  <script src="{% static 'js/core/bootstrap-material-design.min.js' %}" type="text/javascript"></script>
+  <script src="{% static 'js/plugins/moment.min.js' %}"></script>
+  <script src="{% static 'js/material-kit.min.js' %}" type="text/javascript"></script>
+</body>
+
+</html>

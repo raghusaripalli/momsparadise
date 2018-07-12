@@ -1,0 +1,102 @@
+{% extends "shop/base.html" %}
+{% block title %}
+Checkout
+{% endblock %}
+{% block content %}
+<div class="container py-3">
+    <div class="row">
+        <div class="col-sm-8">
+    <div class="card container">
+        <button class="btn btn-info" onclick="getAddress()"><i class="material-icons">location_on</i>Locate My Address</button>
+        <form action="." method="post" >
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    {{ form.name }}
+                </div>
+                <div class="form-group col-md-6">
+                    {{ form.phone }}
+                </div>
+            </div>
+            <div class="form-group">
+                {{ form.email }}
+            </div>
+            <div class="form-group">
+                {{ form.address }}
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    {{ form.pincode }}
+                </div>
+                <div class="form-group col-md-6">
+                    {{ form.landmark }}
+                </div>
+            </div>
+            <input type="submit" class="btn btn-primary float-right"  value="Place order &rightarrow;">
+        </form>
+    </div>
+    </div>
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Price Details</h4>
+                    <hr>
+                    {% for item in cart %}
+                    <div class="row">
+                        <div class="col text-left">{{ item.quantity }}x  {{ item.product.name }}</div>
+                        <div class="col text-right font-weight-bold">Rs. {{ item.total_price }}</div>
+                    </div>
+                    {% endfor %}
+                    <div class="row">
+                        <div class="col text-left">Delivery Charges</div>
+                        <div class="col text-right font-weight-bold text-success">FREE</div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col text-left font-weight-bold">Total Amount Payable</div>
+                        <div class="col text-right font-weight-bold">Rs. {{ cart.get_total_price }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+function getAddress(){
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+    var pos = {
+    lat: position.coords.latitude,
+    lng: position.coords.longitude
+    };
+    var geocoder = new google.maps.Geocoder();
+    geocoder.geocode({'location': pos}, function(results, status) {
+    if (status === 'OK') {
+    if (results[0]) {
+    let temp1 = results[0];
+    let l = temp1.address_components['length'];
+    if (temp1.address_components[l-1]['types'][0]=='postal_code'){
+    //console.log(temp1.address_components[l-1]['long_name']);
+    document.getElementById("pincode").value = temp1.address_components[l-1]['long_name'];
+    document.getElementById("address").value = temp1.formatted_address;
+    }
+    } else {
+    window.alert('No results found');
+    }
+    } else {
+    window.alert('Geocoder failed due to: ' + status);
+    }
+    });
+    }, function error(msg) {
+    alert("Error Loading location");
+    }, {maximumAge:600000, timeout:5000, enableHighAccuracy: true});
+}
+else {
+    alert("Browser doesn't support Geolocation");
+}
+}
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3AiMZ3vM4arICGacjHHhVbu1qzeYGu38">
+</script>
+{% endblock %}
