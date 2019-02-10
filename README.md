@@ -6,3 +6,10 @@ Food prepared by Talented Mothers at Home, for people who crave for Homemade foo
 
 ## Website Description
 This website handles online requests for food delivery and provides customer seamless journey for healthy food.
+
+## Tech Stack
+- Django
+- Jinja
+- Material Theme
+- Celery
+- RabbitMQ
